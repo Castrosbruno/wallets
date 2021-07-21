@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Moedas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Descrição</th>
+      <th>Sigla</th>
+      <th>Imagem</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @coins.each do |coin| %>
+      <tr>
+        <td><%= coin.description %></td>
+        <td><%= coin.acronym %></td>
+        <td><% if coin.url_image %>
+              <%=    image_tag coin.url_image, size: "45x45" %>
+                <% else %>
+              <%=    image_tag "https://imagensemoldes.com.br/wp-content/uploads/2021/02/Imagem-Letra-X-PNG.png", size: "45x45" %>
+                <% end %>
+                 </td>
+        <td><%= link_to 'Mostrar', coin %></td>
+        <td><%= link_to 'Editar', edit_coin_path(coin) %></td>
+        <td><%= link_to 'Apagar', coin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Cadastrar nova moeda', new_coin_path %>

@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descrição:</strong>
+  <%= @coin.description %>
+</p>
+
+<p>
+  <strong>Sígla:</strong>
+  <%= @coin.acronym %>
+</p>
+
+<p>
+  <strong>Imagem:</strong>
+  <% if @coin.url_image %>
+        <%= image_tag @coin.url_image, size: "30x30" %>
+      <% else %>
+        <%=image_tag "https://imagensemoldes.com.br/wp-content/uploads/2021/02/Imagem-Letra-X-PNG.png", size: "45x45" %>
+    <% end %>
+</p>
+
+<%= link_to 'Edit', edit_coin_path(@coin) %> |
+<%= link_to 'Back', coins_path %>
